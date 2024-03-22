@@ -12,6 +12,8 @@ services:
       - 9090
     ports:
       - 9090:9090
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   node-exporter:
     image: quay.io/prometheus/node-exporter:latest
@@ -20,9 +22,13 @@ services:
       - 9100:9100
     expose:
       - 9100
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   grafana:
     image: grafana/grafana-oss:latest
     container_name: grafana
     ports:
       - 3000:3000
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
